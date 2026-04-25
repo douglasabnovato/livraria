@@ -1,0 +1,482 @@
+{
+  "metadata": {
+    "projeto": "learnTECH Books Catalog",
+    "bu": "learnTECH / byteclass",
+    "tecnologias": [
+      "HTML5",
+      "CSS3 (Glassmorphism)",
+      "JavaScript Vanilla",
+      "JSON"
+    ],
+    "design_specs": {
+      "cores": {
+        "primary": "#0984e3",
+        "accent": "#d63031",
+        "bg": "#fcfcfc"
+      },
+      "fontes": {
+        "serif": "Merriweather",
+        "sans": "Inter"
+      },
+      "componentes": [
+        "Navbar Glass",
+        "Hero Mkt",
+        "Carrossel Dinâmico",
+        "Grid Filtrável",
+        "Modal UX"
+      ]
+    }
+  },
+  "livros": [
+    {
+      "id": 1,
+      "titulo": "Como Fazer Amigos e Influenciar Pessoas",
+      "autor": "Dale Carnegie",
+      "preco": 29.9,
+      "categoria": "Desenvolvimento Pessoal",
+      "destaque": true,
+      "preview": "O guia clássico para criar conexões e influenciar positivamente pessoas."
+    },
+    {
+      "id": 2,
+      "titulo": "O Diário de um CEO",
+      "autor": "Steven Bartlett",
+      "preco": 49.9,
+      "categoria": "Negócios",
+      "destaque": true,
+      "preview": "33 leis para o sucesso nos negócios e na vida."
+    },
+    {
+      "id": 3,
+      "titulo": "A Única Coisa",
+      "autor": "Gary Keller",
+      "preco": 44.9,
+      "categoria": "Produtividade",
+      "destaque": true,
+      "preview": "Foque no que importa e obtenha resultados extraordinários."
+    },
+    {
+      "id": 4,
+      "titulo": "As Armas da Persuasão 2.0",
+      "autor": "Robert Cialdini",
+      "preco": 49.9,
+      "categoria": "Psicologia",
+      "destaque": true,
+      "preview": "A ciência por trás do sim e os gatilhos da influência."
+    },
+    {
+      "id": 5,
+      "titulo": "O Menino, a Toupeira, a Raposa e o Cavalo",
+      "autor": "Charlie Mackesy",
+      "preco": 79.9,
+      "categoria": "Ficção",
+      "destaque": true,
+      "preview": "Uma lição de bondade, esperança e amizade."
+    },
+    {
+      "id": 6,
+      "titulo": "Pense de Novo",
+      "autor": "Adam Grant",
+      "preco": 39.9,
+      "categoria": "Psicologia",
+      "destaque": false,
+      "preview": "A agilidade mental de repensar suas próprias opiniões."
+    },
+    {
+      "id": 7,
+      "titulo": "A Sutil Arte de Ligar o F*da-se",
+      "autor": "Mark Manson",
+      "preco": 39.9,
+      "categoria": "Desenvolvimento Pessoal",
+      "destaque": false,
+      "preview": "Como focar no que realmente importa em um mundo caótico."
+    },
+    {
+      "id": 8,
+      "titulo": "O Monge e o Executivo",
+      "autor": "James C. Hunter",
+      "preco": 39.9,
+      "categoria": "Negócios",
+      "destaque": false,
+      "preview": "A essência da liderança servidora."
+    },
+    {
+      "id": 9,
+      "titulo": "Nada Pode Me Ferir",
+      "autor": "David Goggins",
+      "preco": 49.9,
+      "categoria": "Autobiografia",
+      "destaque": false,
+      "preview": "Domine sua mente e supere o impossível."
+    },
+    {
+      "id": 10,
+      "titulo": "A Hipótese do Amor",
+      "autor": "Ali Hazelwood",
+      "preco": 54.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "Uma cientista, um falso namoro e resultados inesperados."
+    },
+    {
+      "id": 11,
+      "titulo": "O Ladrão de Raios",
+      "autor": "Rick Riordan",
+      "preco": 53.9,
+      "categoria": "Fantasia",
+      "destaque": false,
+      "preview": "Percy Jackson e a descoberta do mundo dos deuses do Olimpo."
+    },
+    {
+      "id": 12,
+      "titulo": "Ego é o seu Inimigo",
+      "autor": "Ryan Holiday",
+      "preco": 42.9,
+      "categoria": "Desenvolvimento Pessoal",
+      "destaque": false,
+      "preview": "Como domar o ego para alcançar a verdadeira grandeza."
+    },
+    {
+      "id": 13,
+      "titulo": "O Poder do Agora",
+      "autor": "Eckhart Tolle",
+      "preco": 44.9,
+      "categoria": "Espiritualidade",
+      "destaque": false,
+      "preview": "O guia para a iluminação espiritual e presença."
+    },
+    {
+      "id": 14,
+      "titulo": "Ikigai",
+      "autor": "Ken Mogi",
+      "preco": 39.9,
+      "categoria": "Desenvolvimento Pessoal",
+      "destaque": false,
+      "preview": "O segredo japonês para uma vida longa e feliz."
+    },
+    {
+      "id": 15,
+      "titulo": "Mãe, me conta sua história?",
+      "autor": "Vários",
+      "preco": 49.9,
+      "categoria": "Presente",
+      "destaque": false,
+      "preview": "Um livro para registrar memórias inesquecíveis."
+    },
+    {
+      "id": 16,
+      "titulo": "O Detento",
+      "autor": "Freida McFadden",
+      "preco": 54.9,
+      "categoria": "Suspense",
+      "destaque": true,
+      "preview": "Um thriller psicológico viciante sobre segredos e perigo."
+    },
+    {
+      "id": 17,
+      "titulo": "Brevidade Inteligente",
+      "autor": "Jim VandeHei",
+      "preco": 42.0,
+      "categoria": "Negócios",
+      "destaque": false,
+      "preview": "Aprenda a dizer mais com menos em um mundo de ruído."
+    },
+    {
+      "id": 18,
+      "titulo": "O Caminho do Artista",
+      "autor": "Julia Cameron",
+      "preco": 59.9,
+      "categoria": "Desenvolvimento Pessoal",
+      "destaque": false,
+      "preview": "Liberte sua criatividade e supere bloqueios mentais."
+    },
+    {
+      "id": 19,
+      "titulo": "Noiva",
+      "autor": "Ali Hazelwood",
+      "preco": 64.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "Um romance sobrenatural entre uma vampira e um lobisomem."
+    },
+    {
+      "id": 20,
+      "titulo": "Sem Defeitos",
+      "autor": "Elsie Silver",
+      "preco": 59.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "Um romance country intenso e apaixonante."
+    },
+    {
+      "id": 21,
+      "titulo": "Caçador Sem Coração",
+      "autor": "Kristen Ciccarelli",
+      "preco": 62.9,
+      "categoria": "Fantasia",
+      "destaque": false,
+      "preview": "Uma caçadora de bruxas e um mistério mortal."
+    },
+    {
+      "id": 22,
+      "titulo": "Mude seus Horários, Mude sua Vida",
+      "autor": "Dr. Suhas Kshirsagar",
+      "preco": 49.9,
+      "categoria": "Saúde",
+      "destaque": false,
+      "preview": "A cronobiologia a favor da sua saúde e energia."
+    },
+    {
+      "id": 23,
+      "titulo": "Acolhendo sua Criança Interior",
+      "autor": "Stefanie Stahl",
+      "preco": 52.9,
+      "categoria": "Psicologia",
+      "destaque": false,
+      "preview": "Encontre o equilíbrio emocional curando feridas do passado."
+    },
+    {
+      "id": 24,
+      "titulo": "Tudo Bem Não Estar Tudo Bem",
+      "autor": "Megan Devine",
+      "preco": 47.9,
+      "categoria": "Psicologia",
+      "destaque": false,
+      "preview": "Uma nova forma de entender o luto e a perda."
+    },
+    {
+      "id": 25,
+      "titulo": "Superintestino",
+      "autor": "Dr. William Davis",
+      "preco": 58.9,
+      "categoria": "Saúde",
+      "destaque": false,
+      "preview": "Recupere sua saúde através da microbiota intestinal."
+    },
+    {
+      "id": 26,
+      "titulo": "A Paciente Silenciosa",
+      "autor": "Alex Michaelides",
+      "preco": 49.9,
+      "categoria": "Suspense",
+      "destaque": false,
+      "preview": "Um mistério sobre uma mulher que para de falar após um crime."
+    },
+    {
+      "id": 27,
+      "titulo": "Pense Duas Vezes",
+      "autor": "Harlan Coben",
+      "preco": 54.9,
+      "categoria": "Suspense",
+      "destaque": false,
+      "preview": "O mestre do suspense em uma trama de reviravoltas."
+    },
+    {
+      "id": 28,
+      "titulo": "Outlive",
+      "autor": "Peter Attia",
+      "preco": 89.9,
+      "categoria": "Saúde",
+      "destaque": false,
+      "preview": "A ciência da longevidade e medicina preventiva."
+    },
+    {
+      "id": 29,
+      "titulo": "A Bailarina de Auschwitz",
+      "autor": "Edith Eva Eger",
+      "preco": 44.9,
+      "categoria": "História",
+      "destaque": false,
+      "preview": "Uma história real de sobrevivência e liberdade interior."
+    },
+    {
+      "id": 30,
+      "titulo": "O Mito do Normal",
+      "autor": "Gabor Maté",
+      "preco": 79.9,
+      "categoria": "Saúde",
+      "destaque": false,
+      "preview": "A relação entre trauma, doença e a cultura moderna."
+    },
+    {
+      "id": 31,
+      "titulo": "Dopamina",
+      "autor": "Daniel Z. Lieberman",
+      "preco": 54.9,
+      "categoria": "Psicologia",
+      "destaque": false,
+      "preview": "Como uma molécula comanda o desejo e o futuro da humanidade."
+    },
+    {
+      "id": 32,
+      "titulo": "Um Experimento de Amor em NY",
+      "autor": "Elena Armas",
+      "preco": 59.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "Um romance irresistível na cidade que nunca dorme."
+    },
+    {
+      "id": 33,
+      "titulo": "O Dilema da Noiva",
+      "autor": "Elena Armas",
+      "preco": 59.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "Mais uma comédia romântica deliciosa da autora de best-sellers."
+    },
+    {
+      "id": 34,
+      "titulo": "Parte do seu Mundo",
+      "autor": "Abby Jimenez",
+      "preco": 54.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "Diferentes mundos colidem neste romance emocionante."
+    },
+    {
+      "id": 35,
+      "titulo": "Para Sempre Seu",
+      "autor": "Abby Jimenez",
+      "preco": 54.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "Uma história sobre segundas chances e amor verdadeiro."
+    },
+    {
+      "id": 36,
+      "titulo": "Sem Coração",
+      "autor": "Elsie Silver",
+      "preco": 59.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "Paixão e drama em uma pequena cidade do Canadá."
+    },
+    {
+      "id": 37,
+      "titulo": "O Visconde que me Amava",
+      "autor": "Julia Quinn",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "A saga Bridgerton continua com Anthony e Kate."
+    },
+    {
+      "id": 38,
+      "titulo": "A Menina que Roubava Livros",
+      "autor": "Markus Zusak",
+      "preco": 59.9,
+      "categoria": "Ficção Histórica",
+      "destaque": false,
+      "preview": "A vida de Liesel Meminger durante a Segunda Guerra Mundial."
+    },
+    {
+      "id": 39,
+      "titulo": "Amor & Gelato",
+      "autor": "Jenna Evans Welch",
+      "preco": 44.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "Um verão inesquecível na Itália em busca de respostas."
+    },
+    {
+      "id": 40,
+      "titulo": "Emocionário",
+      "autor": "Vários Autores",
+      "preco": 69.9,
+      "categoria": "Infantil",
+      "destaque": false,
+      "preview": "Um dicionário de emoções para crianças e adultos."
+    },
+    {
+      "id": 41,
+      "titulo": "O Ladrão de Raios",
+      "autor": "Rick Riordan",
+      "preco": 53.9,
+      "categoria": "Fantasia",
+      "destaque": false,
+      "preview": "O início da jornada do semideus Percy Jackson."
+    },
+    {
+      "id": 42,
+      "titulo": "Pense Duas Vezes",
+      "autor": "Harlan Coben",
+      "preco": 54.9,
+      "categoria": "Suspense",
+      "destaque": false,
+      "preview": "Segredos do passado que retornam para assombrar."
+    },
+    {
+      "id": 43,
+      "titulo": "Como falar em público e encantar as pessoas",
+      "autor": "Dale Carnegie",
+      "preco": 34.9,
+      "categoria": "Desenvolvimento Pessoal",
+      "destaque": false,
+      "preview": "Domine a arte da oratória e comunicação."
+    },
+    {
+      "id": 44,
+      "titulo": "O Duque e Eu",
+      "autor": "Julia Quinn",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false,
+      "preview": "O início da amada série Bridgerton."
+    },
+    {
+      "id": 45,
+      "titulo": "Sem Esforço",
+      "autor": "Greg McKeown",
+      "preco": 44.9,
+      "categoria": "Produtividade",
+      "destaque": false,
+      "preview": "Torne as tarefas essenciais mais fáceis de realizar."
+    },
+    {
+      "id": 46,
+      "titulo": "O Obstáculo é o Caminho",
+      "autor": "Ryan Holiday",
+      "preco": 42.9,
+      "categoria": "Desenvolvimento Pessoal",
+      "destaque": false,
+      "preview": "A sabedoria estóica para transformar provações em triunfo."
+    },
+    {
+      "id": 47,
+      "titulo": "Por que ninguém me disse isso antes?",
+      "autor": "Julie Smith",
+      "preco": 54.9,
+      "categoria": "Psicologia",
+      "destaque": false,
+      "preview": "Ferramentas práticas para gerenciar sua saúde mental."
+    },
+    {
+      "id": 48,
+      "titulo": "A morte é um dia que vale a pena viver",
+      "autor": "Ana Claudia Q. Arantes",
+      "preco": 39.9,
+      "categoria": "Psicologia",
+      "destaque": false,
+      "preview": "Reflexões sobre a vida, o cuidado e a finitude."
+    },
+    {
+      "id": 49,
+      "titulo": "Me amo, te amo",
+      "autor": "Maria Esclapez",
+      "preco": 59.9,
+      "categoria": "Psicologia",
+      "destaque": false,
+      "preview": "Guia para construir relacionamentos saudáveis."
+    },
+    {
+      "id": 50,
+      "titulo": "O Mito do Normal",
+      "autor": "Gabor Maté",
+      "preco": 79.9,
+      "categoria": "Saúde",
+      "destaque": false,
+      "preview": "Investigação sobre o impacto da cultura na nossa saúde."
+    }
+  ]
+}

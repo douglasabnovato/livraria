@@ -1,0 +1,447 @@
+{
+  "metadata": {
+    "projeto": "learnTECH / byteclass Catalog",
+    "cto": "Douglas A. B. Novato",
+    "total_itens": 54,
+    "last_update": "2026-04-25",
+    "design_specs": {
+      "primary_color": "#0984e3",
+      "font": "Merriweather",
+      "ux_focus": "Glassmorphism & Pareto 80/20"
+    }
+  },
+  "biblioteca": [
+    {
+      "id": 1,
+      "titulo": "Como fazer amigos e influenciar pessoas",
+      "autor": "Dale Carnegie",
+      "preco": 29.9,
+      "categoria": "Desenvolvimento Pessoal",
+      "destaque": true
+    },
+    {
+      "id": 2,
+      "titulo": "Como falar em público e encantar as pessoas",
+      "autor": "Dale Carnegie",
+      "preco": 29.9,
+      "categoria": "Desenvolvimento Pessoal",
+      "destaque": false
+    },
+    {
+      "id": 3,
+      "titulo": "O poder do agora",
+      "autor": "Eckhart Tolle",
+      "preco": 39.9,
+      "categoria": "Espiritualidade",
+      "destaque": false
+    },
+    {
+      "id": 4,
+      "titulo": "Nada pode me ferir",
+      "autor": "David Goggins",
+      "preco": 49.9,
+      "categoria": "Autobiografia",
+      "destaque": true
+    },
+    {
+      "id": 5,
+      "titulo": "Por que ninguém me disse isso antes?",
+      "autor": "Julie Smith",
+      "preco": 39.9,
+      "categoria": "Psicologia",
+      "destaque": false
+    },
+    {
+      "id": 6,
+      "titulo": "A morte é um dia que vale a pena viver",
+      "autor": "Ana Claudia Quintana Arantes",
+      "preco": 44.9,
+      "categoria": "Psicologia",
+      "destaque": false
+    },
+    {
+      "id": 7,
+      "titulo": "O caminho do artista",
+      "autor": "Julia Cameron",
+      "preco": 39.9,
+      "categoria": "Desenvolvimento Pessoal",
+      "destaque": false
+    },
+    {
+      "id": 8,
+      "titulo": "Acolhendo sua criança interior",
+      "autor": "Stefanie Stahl",
+      "preco": 49.9,
+      "categoria": "Psicologia",
+      "destaque": false
+    },
+    {
+      "id": 9,
+      "titulo": "Me amo, te amo",
+      "autor": "Maria Esclapez",
+      "preco": 39.9,
+      "categoria": "Psicologia",
+      "destaque": false
+    },
+    {
+      "id": 10,
+      "titulo": "Tudo bem não estar tudo bem",
+      "autor": "Megan Devine",
+      "preco": 39.9,
+      "categoria": "Psicologia",
+      "destaque": false
+    },
+    {
+      "id": 11,
+      "titulo": "O monge e o executivo",
+      "autor": "James C. Hunter",
+      "preco": 39.9,
+      "categoria": "Negócios",
+      "destaque": false
+    },
+    {
+      "id": 12,
+      "titulo": "O diário de um CEO",
+      "autor": "Steven Bartlett",
+      "preco": 49.9,
+      "categoria": "Negócios",
+      "destaque": true
+    },
+    {
+      "id": 13,
+      "titulo": "As armas da persuasão 2.0",
+      "autor": "Robert Cialdini",
+      "preco": 49.9,
+      "categoria": "Psicologia",
+      "destaque": true
+    },
+    {
+      "id": 14,
+      "titulo": "Brevidade inteligente",
+      "autor": "Jim VandeHei",
+      "preco": 44.9,
+      "categoria": "Negócios",
+      "destaque": false
+    },
+    {
+      "id": 15,
+      "titulo": "Sem esforço",
+      "autor": "Greg McKeown",
+      "preco": 44.9,
+      "categoria": "Produtividade",
+      "destaque": false
+    },
+    {
+      "id": 16,
+      "titulo": "A única coisa",
+      "autor": "Gary Keller",
+      "preco": 44.9,
+      "categoria": "Produtividade",
+      "destaque": true
+    },
+    {
+      "id": 17,
+      "titulo": "Casais inteligentes enriquecem juntos",
+      "autor": "Gustavo Cerbasi",
+      "preco": 39.9,
+      "categoria": "Finanças",
+      "destaque": false
+    },
+    {
+      "id": 18,
+      "titulo": "Chefe de mim",
+      "autor": "Nathalia Arcuri",
+      "preco": 29.9,
+      "categoria": "Finanças",
+      "destaque": false
+    },
+    {
+      "id": 19,
+      "titulo": "O menino, a toupeira, a raposa e o cavalo",
+      "autor": "Charlie Mackesy",
+      "preco": 79.9,
+      "categoria": "Ficção",
+      "destaque": true
+    },
+    {
+      "id": 20,
+      "titulo": "Emocionário",
+      "autor": "Vários autores",
+      "preco": 64.9,
+      "categoria": "Infantil",
+      "destaque": false
+    },
+    {
+      "id": 87,
+      "titulo": "Pactos Ousados",
+      "autor": "Caroline Peckham",
+      "preco": 67.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 88,
+      "titulo": "O Detento",
+      "autor": "Freida McFadden",
+      "preco": 44.9,
+      "categoria": "Suspense",
+      "destaque": true
+    },
+    {
+      "id": 89,
+      "titulo": "A sete chaves",
+      "autor": "Freida McFadden",
+      "preco": 44.9,
+      "categoria": "Suspense",
+      "destaque": false
+    },
+    {
+      "id": 90,
+      "titulo": "Pen Pal",
+      "autor": "J.T. Geissinger",
+      "preco": 39.9,
+      "categoria": "Suspense",
+      "destaque": false
+    },
+    {
+      "id": 91,
+      "titulo": "Pense duas vezes",
+      "autor": "Harlan Coben",
+      "preco": 39.9,
+      "categoria": "Suspense",
+      "destaque": false
+    },
+    {
+      "id": 92,
+      "titulo": "Jogando com o controle",
+      "autor": "Peyton Corinne",
+      "preco": 39.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 93,
+      "titulo": "Caçador sem coração",
+      "autor": "Kristen Ciccarelli",
+      "preco": 54.9,
+      "categoria": "Fantasia",
+      "destaque": false
+    },
+    {
+      "id": 94,
+      "titulo": "Noiva",
+      "autor": "Ali Hazelwood",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": true
+    },
+    {
+      "id": 95,
+      "titulo": "Parceira",
+      "autor": "Ali Hazelwood",
+      "preco": 74.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 96,
+      "titulo": "Um amor problemático de verão",
+      "autor": "Ali Hazelwood",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 97,
+      "titulo": "Não é amor",
+      "autor": "Ali Hazelwood",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 98,
+      "titulo": "Odeio te amar",
+      "autor": "Ali Hazelwood",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 99,
+      "titulo": "Xeque-mate",
+      "autor": "Ali Hazelwood",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 100,
+      "titulo": "Um experimento de amor em Nova York",
+      "autor": "Elena Armas",
+      "preco": 39.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 101,
+      "titulo": "Amor em jogo",
+      "autor": "Elena Armas",
+      "preco": 39.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 102,
+      "titulo": "O dilema da noiva",
+      "autor": "Elena Armas",
+      "preco": 39.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 103,
+      "titulo": "Parte do seu mundo",
+      "autor": "Abby Jimenez",
+      "preco": 44.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 104,
+      "titulo": "Para sempre seu",
+      "autor": "Abby Jimenez",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 105,
+      "titulo": "Até o fim do verão",
+      "autor": "Abby Jimenez",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 106,
+      "titulo": "A vida é muito curta",
+      "autor": "Abby Jimenez",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 107,
+      "titulo": "Sete anos entre nós",
+      "autor": "Ashley Poston",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 108,
+      "titulo": "Sem defeitos",
+      "autor": "Elsie Silver",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 109,
+      "titulo": "Sem coração",
+      "autor": "Elsie Silver",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 110,
+      "titulo": "Sem controle",
+      "autor": "Elsie Silver",
+      "preco": 54.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 111,
+      "titulo": "Sem juízo",
+      "autor": "Elsie Silver",
+      "preco": 54.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 112,
+      "titulo": "Não é uma canção de amor",
+      "autor": "Julie Soto",
+      "preco": 39.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 113,
+      "titulo": "O Duque e Eu",
+      "autor": "Julia Quinn",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 114,
+      "titulo": "O Visconde que me amava",
+      "autor": "Julia Quinn",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 115,
+      "titulo": "Um Perfeito Cavalheiro",
+      "autor": "Julia Quinn",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 116,
+      "titulo": "Os Segredos de Colin Bridgerton",
+      "autor": "Julia Quinn",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 117,
+      "titulo": "Para Sir Phillip, Com Amor",
+      "autor": "Julia Quinn",
+      "preco": 49.9,
+      "categoria": "Romance",
+      "destaque": false
+    },
+    {
+      "id": 118,
+      "titulo": "Outlive",
+      "autor": "Peter Attia",
+      "preco": 59.9,
+      "categoria": "Saúde",
+      "destaque": true
+    },
+    {
+      "id": 119,
+      "titulo": "O mito do normal",
+      "autor": "Gabor Maté",
+      "preco": 49.9,
+      "categoria": "Saúde",
+      "destaque": false
+    },
+    {
+      "id": 120,
+      "titulo": "Superintestino",
+      "autor": "William Davis",
+      "preco": 39.9,
+      "categoria": "Saúde",
+      "destaque": false
+    }
+  ]
+}

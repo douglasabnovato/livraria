@@ -1,0 +1,397 @@
+/* learnTECH Books - Design System v3.0
+   Foco: Experiência Premium, Performance e Conversão
+*/
+
+:root {
+  /* Paleta de Cores Profissional */
+  --primary: #0984e3; /* Azul Estratégico learnTECH */
+  --primary-dark: #074b83;
+  --accent: #d63031; /* Vermelho Amazon para Preços */
+  --bg-light: #fcfcfc; /* Fundo Confortável */
+  --bg-section: #f4f4f4; /* Respiro entre seções */
+  --text-main: #2d3436;
+  --text-muted: #636e72;
+  --glass: rgba(255, 255, 255, 0.85);
+
+  /* Tipografia */
+  --font-serif: "Merriweather", serif;
+  --font-sans: "Inter", sans-serif;
+
+  /* Efeitos */
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.08);
+  --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  --border-radius: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* --- NAVBAR GLASSMORPHISM --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  z-index: 2000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--text-main);
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-primary-sm {
+  background: var(--text-main);
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  height: 70vh;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding-top: 80px;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2.5rem;
+  opacity: 0.9;
+}
+
+.btn-cta-hero {
+  background: var(--primary);
+  color: #fff;
+  padding: 1.2rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+.btn-cta-hero:hover {
+  transform: scale(1.05);
+  background: var(--primary-dark);
+}
+
+/* --- SEÇÃO DESTAQUES (Estilo Coca-Cola) --- */
+.destaques-premium {
+  padding: 6rem 0;
+  background: #fff;
+}
+
+.section-title {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.carousel-wrapper {
+  position: relative;
+  margin-top: 3rem;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2.5rem;
+  overflow-x: auto;
+  padding: 2rem 15%; /* Efeito Peeking */
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.destaque-card {
+  min-width: 300px;
+  scroll-snap-align: center;
+  transition: var(--transition);
+}
+
+.destaque-card img {
+  width: 100%;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #ddd;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.dot.active {
+  width: 30px;
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+/* --- MAIS VENDIDOS (Estilo Grid Limpo) --- */
+.mais-vendidos-section {
+  padding: 6rem 0;
+  background: var(--bg-section);
+}
+
+.grid-marcas-style {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.card-mais-vendido {
+  background: #fff;
+  border-radius: 24px;
+  padding: 2.5rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+}
+
+.card-mais-vendido:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-mais-vendido img {
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+}
+
+/* --- CATÁLOGO (Estilo Amazon Conversão) --- */
+.catalogo-section {
+  padding: 6rem 0;
+}
+
+.search-filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 1.2rem 3rem 1.2rem 1.5rem;
+  border-radius: 50px;
+  border: 2px solid #eee;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-bar:focus {
+  border-color: var(--primary);
+}
+
+.filter-group {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  border: 1px solid #eee;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.grid-livros {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+/* Card Estilo Amazon */
+.livro-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.livro-card:hover {
+  border-color: #eee;
+  box-shadow: var(--shadow-sm);
+}
+
+.livro-card img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.valor-promo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.valor-promo span {
+  font-size: 0.8rem;
+  vertical-align: top;
+}
+
+.valor-original {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.livro-titulo {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.8rem;
+}
+
+/* --- MODAL --- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: none;
+  z-index: 3000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 30px;
+  position: relative;
+  padding: 3rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .carousel-track {
+    padding: 1rem 5%;
+  }
+  .grid-marcas-style {
+    grid-template-columns: 1fr;
+  }
+}
