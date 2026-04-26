@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
    */
   const carregarDados = async () => {
     try {
-      const response = await fetch("biblioteca.json");
+      const response = await fetch("./data/biblioteca.json");
       if (!response.ok) throw new Error("Erro ao carregar banco de dados.");
 
       bibliotecaCompleta = await response.json();
