@@ -1,34 +1,37 @@
-/* learnTECH Books - Design System v3.0
-   Foco: Experiência Premium, Performance e Conversão
+/* learnTECH Books - Master Design System v4.0 
+    Estratégia: Luxury UX + Conversion Focus
+    Manutenção: [INÍCIO] e [FIM] por seção
 */
 
 :root {
-  /* Paleta de Cores Profissional */
-  --primary: #0984e3; /* Azul Estratégico learnTECH */
+  /* Paleta de Cores de Prestígio */
+  --primary: #0984e3;
   --primary-dark: #074b83;
-  --accent: #d63031; /* Vermelho Amazon para Preços */
-  --bg-light: #fcfcfc; /* Fundo Confortável */
-  --bg-section: #f4f4f4; /* Respiro entre seções */
+  --accent: #b12704;
+  --bg-light: #fcfcfc;
+  --bg-section: #f4f7f6;
   --text-main: #2d3436;
   --text-muted: #636e72;
+  --white: #ffffff;
   --glass: rgba(255, 255, 255, 0.85);
 
   /* Tipografia */
   --font-serif: "Merriweather", serif;
   --font-sans: "Inter", sans-serif;
 
-  /* Efeitos */
-  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.08);
+  /* Tokens de Design */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
   --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  --border-radius: 20px;
+  --border-radius: 16px;
 }
 
+/* --- [INÍCIO] RESET & BASE --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -36,6 +39,8 @@ body {
   background-color: var(--bg-light);
   color: var(--text-main);
   line-height: 1.6;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -43,11 +48,26 @@ body {
   margin: 0 auto;
   padding: 0 2rem;
 }
+.section-padding {
+  padding: 80px 0;
+}
 
-/* --- NAVBAR GLASSMORPHISM --- */
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.section-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+}
+/* --- [FIM] RESET & BASE --- */
+
+/* --- [INÍCIO] NAVBAR ELITE --- */
 .navbar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 80px;
   display: flex;
@@ -56,239 +76,207 @@ body {
   padding: 0 5%;
   background: var(--glass);
   backdrop-filter: blur(15px);
-  z-index: 2000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  z-index: 3000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: var(--transition);
+}
+
+.navbar-scrolled {
+  height: 70px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-sm);
 }
 
 .logo {
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: 1.4rem;
-  color: var(--text-main);
+  font-size: 1.5rem;
 }
-
 .logo span {
   color: var(--primary);
 }
 
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   list-style: none;
 }
-
 .nav-links a {
   text-decoration: none;
   color: var(--text-main);
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  position: relative;
+  transition: 0.3s;
 }
-
-.btn-primary-sm {
-  background: var(--text-main);
-  color: #fff;
-  padding: 0.6rem 1.5rem;
-  border-radius: 50px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
+.nav-links a:hover {
+  color: var(--primary);
 }
+/* --- [FIM] NAVBAR ELITE --- */
 
-/* --- HERO SECTION --- */
+/* --- [INÍCIO] HERO SECTION --- */
 .hero {
-  height: 70vh;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=80");
-  background-size: cover;
-  background-position: center;
+  height: 85vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
-  padding-top: 80px;
+  color: var(--white);
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
+    url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  clip-path: ellipse(150% 100% at 50% 0%);
+  margin-bottom: 40px;
 }
 
 .hero h1 {
   font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
   margin-bottom: 1.5rem;
 }
-
-.hero p {
-  font-size: 1.2rem;
-  max-width: 700px;
-  margin: 0 auto 2.5rem;
-  opacity: 0.9;
-}
-
 .btn-cta-hero {
   background: var(--primary);
-  color: #fff;
-  padding: 1.2rem 2.5rem;
+  color: white;
+  padding: 1.2rem 3.5rem;
   border-radius: 50px;
   text-decoration: none;
   font-weight: 700;
   transition: var(--transition);
+  display: inline-block;
 }
-
 .btn-cta-hero:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
   background: var(--primary-dark);
 }
+/* --- [FIM] HERO SECTION --- */
 
-/* --- SEÇÃO DESTAQUES (Estilo Coca-Cola) --- */
-.destaques-premium {
-  padding: 6rem 0;
-  background: #fff;
-}
-
-.section-title {
-  text-align: center;
-  font-family: var(--font-serif);
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.carousel-wrapper {
-  position: relative;
-  margin-top: 3rem;
-}
-
+/* --- [INÍCIO] SEÇÃO 1: CARROSSEL DESTAQUES --- */
 .carousel-track {
   display: flex;
-  gap: 2.5rem;
+  gap: 1.5rem;
   overflow-x: auto;
-  padding: 2rem 15%; /* Efeito Peeking */
+  padding: 20px 0 40px;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
 }
-
 .carousel-track::-webkit-scrollbar {
   display: none;
 }
 
-.destaque-card {
-  min-width: 300px;
+.destaque-card-premium {
+  min-width: 85%;
+  height: 420px;
+  background: #f4f7f6;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  padding: 3rem;
   scroll-snap-align: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 1024px) {
+  .destaque-card-premium {
+    min-width: calc(48% - 1rem);
+  }
+}
+
+.destaque-image-wrapper img {
+  height: 300px;
+  filter: drop-shadow(15px 15px 25px rgba(0, 0, 0, 0.2));
+  transform: rotate(6deg);
   transition: var(--transition);
 }
-
-.destaque-card img {
-  width: 100%;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-md);
+.destaque-card-premium:hover .destaque-image-wrapper img {
+  transform: rotate(0deg) scale(1.05);
 }
+/* --- [FIM] SEÇÃO 1: CARROSSEL DESTAQUES --- */
 
-.carousel-indicators {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 2rem;
+/* --- [INÍCIO] SEÇÃO 2: MAIS VENDIDOS --- */
+.bg-section {
+  background-color: var(--bg-section);
 }
-
-.dot {
-  width: 8px;
-  height: 8px;
-  background: #ddd;
-  border-radius: 50%;
-  transition: 0.3s;
-}
-
-.dot.active {
-  width: 30px;
-  background: var(--primary);
-  border-radius: 10px;
-}
-
-/* --- MAIS VENDIDOS (Estilo Grid Limpo) --- */
-.mais-vendidos-section {
-  padding: 6rem 0;
-  background: var(--bg-section);
-}
-
-.grid-marcas-style {
+.grid-mais-vendidos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
 }
 
 .card-mais-vendido {
-  background: #fff;
-  border-radius: 24px;
-  padding: 2.5rem;
-  text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
   transition: var(--transition);
+  position: relative;
+  cursor: pointer;
 }
-
 .card-mais-vendido:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-md);
 }
 
+.rank-badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  background: #e67e22;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.8rem;
+  z-index: 5;
+}
+
 .card-mais-vendido img {
-  height: 180px;
-  object-fit: contain;
-  margin-bottom: 1.5rem;
+  width: 80px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 6px;
 }
+/* --- [FIM] SEÇÃO 2: MAIS VENDIDOS --- */
 
-/* --- CATÁLOGO (Estilo Amazon Conversão) --- */
-.catalogo-section {
-  padding: 6rem 0;
-}
-
+/* --- [INÍCIO] SEÇÃO 3: CATÁLOGO & FILTROS --- */
 .search-filters {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  margin: 2rem 0;
   gap: 2rem;
-  margin-bottom: 4rem;
 }
-
-.search-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-}
-
 .search-bar {
   width: 100%;
-  padding: 1.2rem 3rem 1.2rem 1.5rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 50px;
-  border: 2px solid #eee;
+  border: 1px solid #ddd;
   outline: none;
-  font-size: 1rem;
-}
-
-.search-bar:focus {
-  border-color: var(--primary);
-}
-
-.filter-group {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .filter-btn {
-  padding: 0.6rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 50px;
-  border: 1px solid #eee;
-  background: #fff;
+  border: 1px solid #ddd;
+  background: white;
   cursor: pointer;
-  font-weight: 600;
   transition: 0.3s;
 }
-
 .filter-btn.active {
   background: var(--primary);
-  color: #fff;
+  color: white;
   border-color: var(--primary);
 }
 
@@ -298,100 +286,96 @@ body {
   gap: 2rem;
 }
 
-/* Card Estilo Amazon */
 .livro-card {
-  background: #fff;
+  background: white;
   padding: 1rem;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  transition: 0.3s;
-  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  position: relative;
+  opacity: 0;
 }
-
-.livro-card:hover {
-  border-color: #eee;
-  box-shadow: var(--shadow-sm);
-}
-
 .livro-card img {
   width: 100%;
-  aspect-ratio: 2/3;
-  object-fit: cover;
-  border-radius: 4px;
+  border-radius: 8px;
   margin-bottom: 1rem;
 }
 
 .valor-promo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-main);
+  color: var(--accent);
+  font-size: 1.3rem;
+  font-weight: 800;
 }
-
 .valor-promo span {
-  font-size: 0.8rem;
-  vertical-align: top;
+  font-size: 0.7rem;
+  vertical-align: super;
 }
 
-.valor-original {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  text-decoration: line-through;
+.badge-top {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #f1c40f;
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.6rem;
+  font-weight: 800;
 }
+/* --- [FIM] SEÇÃO 3: CATÁLOGO & FILTROS --- */
 
-.livro-titulo {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin: 0.5rem 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  height: 2.8rem;
-}
-
-/* --- MODAL --- */
+/* --- [INÍCIO] MODAL --- */
 .modal {
+  display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
-  display: none;
-  z-index: 3000;
+  z-index: 5000;
   align-items: center;
   justify-content: center;
 }
-
 .modal-content {
-  background: #fff;
+  background: white;
+  padding: 3rem;
+  border-radius: 24px;
   width: 90%;
   max-width: 800px;
-  border-radius: 30px;
   position: relative;
-  padding: 3rem;
 }
-
 .close-btn {
   position: absolute;
   top: 20px;
   right: 20px;
   font-size: 2rem;
+  cursor: pointer;
   border: none;
   background: none;
-  cursor: pointer;
 }
+.modal-body-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2.5rem;
+}
+/* --- [FIM] MODAL --- */
 
-/* RESPONSIVIDADE */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .carousel-track {
-    padding: 1rem 5%;
-  }
-  .grid-marcas-style {
-    grid-template-columns: 1fr;
-  }
+/* --- [INÍCIO] FOOTER --- */
+.footer-simple {
+  background: #1e272e;
+  color: white;
+  padding: 4rem 0 2rem;
+  margin-top: 80px;
 }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 2rem;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+/* --- [FIM] FOOTER --- */

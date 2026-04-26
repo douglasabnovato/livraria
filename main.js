@@ -1,184 +1,232 @@
 /**
- * learnTECH Books - Core Engine v3.0
- * Arquitetura: Funcional e Event-Driven
+ * learnTECH Books - Core Engine v4.1
+ * Ajuste: Correção de renderização e Case Sensitivity
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  let bibliotecaCompleta = [];
-
-  // Configurações de UI
-  const gridCatalogo = document.getElementById("grid-livros");
-  const gridMaisVendidos = document.getElementById("grid-mais-vendidos");
-  const carrosselDestaque = document.getElementById("carrossel-destaque");
-  const inputBusca = document.getElementById("input-busca");
-  const botoesFiltro = document.querySelectorAll(".filter-btn");
-
-  /**
-   * 1. DATA ENGINE: Carregamento dos dados
-   */
-  const carregarDados = async () => {
-    try {
-      const response = await fetch("./data/biblioteca.json");
-      if (!response.ok) throw new Error("Erro ao carregar banco de dados.");
-
-      bibliotecaCompleta = await response.json();
-
-      // Inicializa as seções
-      renderizarDestaques();
-      renderizarMaisVendidos();
-      renderizarCatalogo(bibliotecaCompleta);
-      configurarFiltros();
-    } catch (error) {
-      console.error("Erro crítico learnTECH:", error);
-      gridCatalogo.innerHTML = `<p class="erro">Ops! Tivemos um problema ao carregar o acervo. Tente novamente mais tarde.</p>`;
-    }
+  
+  // [INÍCIO] 1. ESTADO GLOBAL
+  const state = {
+    biblioteca: [],
+    filtros: {
+      texto: "",
+      categoria: "Todos",
+    },
   };
+  // [FIM] 1. ESTADO GLOBAL
 
-  /**
-   * 2. RENDERERS: Geradores de Interface
-   */
+  // [INÍCIO] 2. SELETORES DE DOM
+  const dom = {
+    carrosselDestaque: document.getElementById("carrossel-destaque"),
+    gridMaisVendidos: document.getElementById("grid-mais-vendidos"),
+    gridCatalogo: document.getElementById("grid-livros"),
+    contadorResultados: document.getElementById("contador-resultados"),
+    inputBusca: document.getElementById("input-busca"),
+    botoesFiltro: document.querySelectorAll(".filter-btn"),
+    modal: document.getElementById("modal-livro"),
+    modalDetalhes: document.getElementById("modal-detalhes"),
+    navbar: document.querySelector(".navbar"),
+  };
+  // [FIM] 2. SELETORES DE DOM
 
-  // Formata preço estilo Amazon (Centavos menores via CSS)
-  const formatarMoeda = (valor) => {
+  // [INÍCIO] 3. UTILS & FORMATADORES
+  const formatarPreco = (valor) => {
+    if (typeof valor !== 'number') return "0<span>,00</span>";
     const [inteiro, centavos] = valor.toFixed(2).split(".");
     return `${inteiro}<span>,${centavos}</span>`;
   };
+  // [FIM] 3. UTILS & FORMATADORES
 
-  const renderizarDestaques = () => {
-    const destaques = bibliotecaCompleta
-      .filter((livro) => livro.destaque)
-      .slice(0, 4);
-    carrosselDestaque.innerHTML = destaques
-      .map(
-        (livro) => `
-            <div class="destaque-card" onclick="abrirModal(${livro.id})">
-                <img src="${livro.capa_url}" alt="${livro.titulo}" fetchpriority="high">
+  // [INÍCIO] 4. RENDERIZADORES
+  
+  const renderDestaques = () => {
+    const destaques = state.biblioteca.filter(l => l.destaque);
+    if (dom.carrosselDestaque) {
+        dom.carrosselDestaque.innerHTML = destaques.map(livro => `
+            <div class="destaque-card-premium">
+                <div class="destaque-content">
+                    <span class="destaque-tag">${livro.categoria}</span>
+                    <h3>${livro.titulo}</h3>
+                    <p>${livro.sinopse.substring(0, 90)}...</p>
+                    <button class="btn-destaque" onclick="abrirModal(${livro.id})">Ver Detalhes</button>
+                </div>
+                <div class="destaque-image-wrapper">
+                    <img src="${livro.capa_url}" alt="${livro.titulo}">
+                </div>
             </div>
-        `,
-      )
-      .join("");
+        `).join("");
+    }
   };
 
-  const renderizarMaisVendidos = () => {
-    const tops = bibliotecaCompleta
-      .filter((livro) => livro.top_seller)
-      .slice(0, 6);
-    gridMaisVendidos.innerHTML = tops
-      .map(
-        (livro) => `
+  const renderMaisVendidos = () => {
+    const tops = state.biblioteca.filter(l => l.top_seller).slice(0, 6);
+    if (dom.gridMaisVendidos) {
+        dom.gridMaisVendidos.innerHTML = tops.map((livro, index) => `
             <article class="card-mais-vendido" onclick="abrirModal(${livro.id})">
-                <img src="${livro.capa_url}" alt="${livro.titulo}" loading="lazy">
+                <div class="rank-badge">${index + 1}</div>
+                <img src="${livro.capa_url}" alt="${livro.titulo}">
                 <div class="book-info">
-                    <h3 class="livro-titulo">${livro.titulo}</h3>
-                    <p class="valor-promo">R$ ${formatarMoeda(livro.preco_promocional)}</p>
+                    <h3 class="livro-titulo-sm">${livro.titulo}</h3>
+                    <p class="valor-promo">R$ ${formatarPreco(livro.preco_promocional)}</p>
                 </div>
             </article>
-        `,
-      )
-      .join("");
+        `).join("");
+    }
   };
 
-  const renderizarCatalogo = (lista) => {
+  const renderCatalogo = (lista) => {
+    if (!dom.gridCatalogo) return;
+
+    dom.contadorResultados.innerText = `${lista.length} de ${state.biblioteca.length} livros`;
+
     if (lista.length === 0) {
-      gridCatalogo.innerHTML = `<p class="no-results">Nenhum livro encontrado para sua busca.</p>`;
+      dom.gridCatalogo.innerHTML = `<div class="empty-state" style="grid-column: 1/-1; text-align: center; padding: 40px;">Nenhum livro encontrado para esta categoria ou busca.</div>`;
       return;
     }
 
-    gridCatalogo.innerHTML = lista
-      .map(
-        (livro) => `
-            <article class="livro-card" onclick="abrirModal(${livro.id})">
-                <img src="${livro.capa_url}" alt="${livro.titulo}" loading="lazy">
-                <div class="preco-container">
-                    <p class="valor-promo">R$ ${formatarMoeda(livro.preco_promocional)}</p>
-                    <p class="valor-original">R$ ${livro.preco_original.toFixed(2)}</p>
-                </div>
-                <h3 class="livro-titulo">${livro.titulo}</h3>
-                <p class="livro-autor">${livro.autor}</p>
-                <div class="amazon-rating">
-                    ${"★".repeat(Math.floor(livro.estrelas))}${"☆".repeat(5 - Math.floor(livro.estrelas))}
-                    <span>(${livro.avaliacoes})</span>
-                </div>
-            </article>
-        `,
-      )
-      .join("");
-  };
-
-  /**
-   * 3. FILTER LOGIC: Busca e Filtros Instantâneos
-   */
-  const filtrarLivros = () => {
-    const termo = inputBusca.value.toLowerCase();
-    const categoriaAtiva =
-      document.querySelector(".filter-btn.active").dataset.categoria;
-
-    const resultado = bibliotecaCompleta.filter((livro) => {
-      const matchesTexto =
-        livro.titulo.toLowerCase().includes(termo) ||
-        livro.autor.toLowerCase().includes(termo);
-      const matchesCategoria =
-        categoriaAtiva === "Todos" || livro.categoria === categoriaAtiva;
-
-      return matchesTexto && matchesCategoria;
-    });
-
-    renderizarCatalogo(resultado);
-  };
-
-  const configurarFiltros = () => {
-    inputBusca.addEventListener("input", filtrarLivros);
-
-    botoesFiltro.forEach((botao) => {
-      botao.addEventListener("click", () => {
-        botoesFiltro.forEach((b) => b.classList.remove("active"));
-        botao.classList.add("active");
-        filtrarLivros();
-      });
-    });
-  };
-
-  /**
-   * 4. UI ENHANCERS: Modal e Interações
-   */
-  window.abrirModal = (id) => {
-    const livro = bibliotecaCompleta.find((l) => l.id === id);
-    const modal = document.getElementById("modal-livro");
-    const detalhes = document.getElementById("modal-detalhes");
-
-    detalhes.innerHTML = `
-            <div class="modal-grid">
-                <img src="${livro.capa_url}" alt="${livro.titulo}">
-                <div class="modal-info">
-                    <h2>${livro.titulo}</h2>
-                    <p class="autor-modal">Por: ${livro.autor}</p>
-                    <div class="preco-modal">
-                        <span class="promo">R$ ${livro.preco_promocional.toFixed(2)}</span>
-                        <span class="original">R$ ${livro.preco_original.toFixed(2)}</span>
-                    </div>
-                    <p class="sinopse">${livro.sinopse || "Uma obra selecionada pela curadoria learnTECH para impulsionar sua jornada."}</p>
-                    <button class="btn-cta-hero" style="width: 100%">Reservar Exemplar</button>
-                </div>
+    dom.gridCatalogo.innerHTML = lista.map((livro, index) => `
+        <article class="livro-card" style="animation-delay: ${index * 0.05}s; opacity: 1;" onclick="abrirModal(${livro.id})">
+            ${livro.top_seller ? '<span class="badge-top">Top Seller</span>' : ""}
+            <img src="${livro.capa_url}" alt="${livro.titulo}" loading="lazy">
+            <div class="preco-container">
+                <p class="valor-original">R$ ${livro.preco_original.toFixed(2)}</p>
+                <p class="valor-promo">R$ ${formatarPreco(livro.preco_promocional)}</p>
             </div>
-        `;
-    modal.style.display = "flex";
-    document.body.style.overflow = "hidden"; // Trava o scroll do fundo
+            <h3 class="livro-titulo">${livro.titulo}</h3>
+            <div class="amazon-rating">
+                ${"★".repeat(Math.floor(livro.estrelas))}${"☆".repeat(5 - Math.floor(livro.estrelas))}
+                <span>(${livro.avaliacoes.toLocaleString()})</span>
+            </div>
+        </article>
+    `).join("");
+  };
+  // [FIM] 4. RENDERIZADORES
+
+  // [INÍCIO] 5. LÓGICA DE FILTRAGEM (Correção de Case Sensitivity)
+  const applyFilters = () => {
+    const buscaTexto = state.filtros.texto.toLowerCase();
+    const buscaCat = state.filtros.categoria;
+
+    const filtrados = state.biblioteca.filter((livro) => {
+      const matchTexto = 
+        livro.titulo.toLowerCase().includes(buscaTexto) || 
+        livro.autor.toLowerCase().includes(buscaTexto);
+      
+      const matchCat = (buscaCat === "Todos") || (livro.categoria === buscaCat);
+      
+      return matchTexto && matchCat;
+    });
+
+    renderCatalogo(filtrados);
+  };
+  // [FIM] 5. LÓGICA DE FILTRAGEM
+
+  // [INÍCIO] 6. SISTEMA DE MODAL & NAV
+  window.abrirModal = (id) => {
+    const livro = state.biblioteca.find(l => l.id === id);
+    if (!livro) return;
+
+    dom.modalDetalhes.innerHTML = `
+        <div class="modal-body-grid">
+            <div class="modal-img-container">
+                <img src="${livro.capa_url}" alt="${livro.titulo}" style="width:100%; border-radius:15px; box-shadow: 20px 20px 40px rgba(0,0,0,0.2);">
+            </div>
+            <div class="modal-text-content">
+                <span class="destaque-tag">${livro.categoria}</span>
+                <h2 style="font-size: 2.2rem; margin-bottom: 10px;">${livro.titulo}</h2>
+                <p style="color: #666; margin-bottom: 20px;">Por <strong>${livro.autor}</strong></p>
+                <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 30px;">${livro.sinopse}</p>
+                <div class="modal-pricing" style="margin-bottom: 20px;">
+                   <span class="valor-promo" style="font-size: 1.8rem;">R$ ${formatarPreco(livro.preco_promocional)}</span>
+                </div>
+                <button class="btn-cta-hero" onclick="confirmarReserva(${livro.id})">Reservar Agora</button>
+            </div>
+        </div>
+    `;
+    dom.modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
   };
 
-  // Fechar Modal
-  document.querySelector(".close-btn").addEventListener("click", () => {
-    document.getElementById("modal-livro").style.display = "none";
+  window.fecharModal = () => {
+    dom.modal.style.display = "none";
     document.body.style.overflow = "auto";
-  });
+  };
 
-  window.onclick = (event) => {
-    const modal = document.getElementById("modal-livro");
-    if (event.target == modal) {
-      modal.style.display = "none";
-      document.body.style.overflow = "auto";
+  window.confirmarReserva = (id) => {
+    const btn = document.querySelector(".modal-text-content .btn-cta-hero");
+    if(btn) {
+        btn.innerHTML = "✓ RESERVADO";
+        btn.style.background = "#27ae60";
+        setTimeout(fecharModal, 1200);
     }
   };
 
-  // Início
-  carregarDados();
+  window.scrollCarousel = (direction) => {
+    const track = dom.carrosselDestaque;
+    const firstCard = track.querySelector(".destaque-card-premium");
+    if (firstCard) {
+      const moveStep = firstCard.offsetWidth + 24;
+      track.scrollBy({ left: direction * moveStep, behavior: 'smooth' });
+    }
+  };
+  // [FIM] 6. SISTEMA DE MODAL
+
+  // [INÍCIO] 7. EVENT LISTENERS
+  const setupEventListeners = () => {
+    if (dom.inputBusca) {
+        let timer;
+        dom.inputBusca.addEventListener("input", (e) => {
+          clearTimeout(timer);
+          state.filtros.texto = e.target.value;
+          timer = setTimeout(applyFilters, 300);
+        });
+    }
+
+    dom.botoesFiltro.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        dom.botoesFiltro.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        state.filtros.categoria = btn.dataset.categoria;
+        applyFilters();
+      });
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === dom.modal) fecharModal();
+    });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        dom.navbar.classList.add("navbar-scrolled");
+      } else {
+        dom.navbar.classList.remove("navbar-scrolled");
+      }
+    });
+  };
+  // [FIM] 7. EVENT LISTENERS
+
+  // [INÍCIO] 8. INICIALIZAÇÃO
+  const init = async () => {
+    try {
+      // Ajuste o caminho se necessário (ex: biblioteca.json na raiz ou na pasta data)
+      const response = await fetch("data/biblioteca.json"); 
+      if (!response.ok) throw new Error("Não foi possível carregar o JSON.");
+      
+      state.biblioteca = await response.json();
+
+      // Ordem de execução
+      renderDestaques();
+      renderMaisVendidos();
+      applyFilters(); // Renderiza o catálogo inicial
+      setupEventListeners();
+
+    } catch (error) {
+      console.error("Erro Crítico:", error);
+      if (dom.gridCatalogo) {
+        dom.gridCatalogo.innerHTML = `<p class="error" style="grid-column: 1/-1; text-align: center;">Erro ao conectar com o acervo. Verifique se o arquivo biblioteca.json está no local correto.</p>`;
+      }
+    }
+  };
+
+  init();
 });
